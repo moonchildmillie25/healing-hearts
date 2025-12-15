@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healing Hearts - Your Breakup Recovery Companion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <div id="onboarding-screen" class="screen">
+      <div class="onboarding-header">
+        <a href="/api/login" class="onboarding-signin-btn">Sign In</a>
+      </div>
+      <div class="floating-hearts">
+        <span class="float-heart" style="--delay: 0s; --left: 10%;">💗</span>
+        <span class="float-heart" style="--delay: 2s; --left: 25%;">💜</span>
+        <span class="float-heart" style="--delay: 4s; --left: 40%;">💖</span>
+        <span class="float-heart" style="--delay: 1s; --left: 55%;">💕</span>
+        <span class="float-heart" style="--delay: 3s; --left: 70%;">💗</span>
+        <span class="float-heart" style="--delay: 5s; --left: 85%;">💜</span>
+      </div>
+      <div class="onboarding-content">
+        <div class="heart-logo-container">
+          <div class="heart-glow"></div>
+          <div class="heart-logo">💗</div>
+        </div>
+        <h1>Healing Hearts</h1>
+        <p class="tagline">Your gentle companion through the storm</p>
+        <p class="tagline-sub">You are not alone. Thousands are healing alongside you.</p>
+        
+        <div class="onboarding-steps">
+          <div id="step-1" class="onboarding-step active">
+            <h2>What's your name?</h2>
+            <p class="step-helper">This is your safe space. Everything stays private.</p>
+            <input type="text" id="user-name" placeholder="Enter your name..." />
+            <button onclick="nextOnboardingStep(2)">Continue</button>
+          </div>
+          
+          <div id="step-2" class="onboarding-step">
+            <h2>When did your breakup happen?</h2>
+            <p class="step-helper">This helps us track your healing journey.</p>
+            <input type="date" id="breakup-date" />
+            <div class="onboarding-nav">
+              <button class="back-btn-onboard" onclick="prevOnboardingStep(1)">← Back</button>
+              <button onclick="nextOnboardingStep(3)">Continue</button>
+            </div>
+          </div>
+          
+          <div id="step-3" class="onboarding-step">
+            <h2>What happened?</h2>
+            <p class="step-helper">This helps us personalize your healing path.</p>
+            <div class="breakup-type-grid">
+              <button class="type-option" data-type="cheated" onclick="selectBreakupType('cheated')">💔 They cheated</button>
+              <button class="type-option" data-type="blindsided" onclick="selectBreakupType('blindsided')">😱 Blindsided</button>
+              <button class="type-option" data-type="toxic" onclick="selectBreakupType('toxic')">🚫 Toxic/Abusive</button>
+              <button class="type-option" data-type="ghosted" onclick="selectBreakupType('ghosted')">👻 Ghosted</button>
+              <button class="type-option" data-type="mutual" onclick="selectBreakupType('mutual')">🤝 Mutual</button>
+              <button class="type-option" data-type="lostself" onclick="selectBreakupType('lostself')">🪞 Lost myself</button>
+              <button class="type-option" data-type="longdistance" onclick="selectBreakupType('longdistance')">✈️ Long distance</button>
+              <button class="type-option" data-type="other" onclick="selectBreakupType('other')">💭 Other</button>
+            </div>
+            <button class="back-btn-onboard standalone" onclick="prevOnboardingStep(2)">← Back</button>
+          </div>
+          
+          <div id="step-4" class="onboarding-step">
+            <h2>How are you feeling right now?</h2>
+            <p class="step-helper">There's no wrong answer. All feelings are valid.</p>
+            <div class="initial-mood-grid">
+              <button class="mood-option" data-mood="devastated" onclick="selectInitialMood('devastated')">💔 Devastated</button>
+              <button class="mood-option" data-mood="sad" onclick="selectInitialMood('sad')">😢 Sad</button>
+              <button class="mood-option" data-mood="angry" onclick="selectInitialMood('angry')">😤 Angry</button>
+              <button class="mood-option" data-mood="betrayed" onclick="selectInitialMood('betrayed')">🗡️ Betrayed</button>
+              <button class="mood-option" data-mood="confused" onclick="selectInitialMood('confused')">😕 Confused</button>
+              <button class="mood-option" data-mood="numb" onclick="selectInitialMood('numb')">😶 Numb</button>
+              <button class="mood-option" data-mood="relieved" onclick="selectInitialMood('relieved')">😮‍💨 Relieved</button>
+              <button class="mood-option" data-mood="hopeful" onclick="selectInitialMood('hopeful')">🌱 Hopeful</button>
+            </div>
+            <button class="back-btn-onboard standalone" onclick="prevOnboardingStep(3)">← Back</button>
+          </div>
+          
+          <div id="step-5" class="onboarding-step">
+            <h2>What kind of support do you need?</h2>
+            <p class="step-helper">Choose your healing vibe. You can change this anytime.</p>
+            <div class="support-style-grid">
+              <button class="style-option" data-style="gentle" onclick="selectSupportStyle('gentle')">
+                <span class="style-emoji">🌸</span>
+                <span class="style-name">Gentle</span>
+                <span class="style-desc">Soft, nurturing support with warmth</span>
+              </button>
+              <button class="style-option" data-style="motivational" onclick="selectSupportStyle('motivational')">
+                <span class="style-emoji">🔥</span>
+                <span class="style-name">Motivational</span>
+                <span class="style-desc">Empowering energy to help you rise</span>
+              </button>
+              <button class="style-option" data-style="toughLove" onclick="selectSupportStyle('toughLove')">
+                <span class="style-emoji">💪</span>
+                <span class="style-name">Tough Love</span>
+                <span class="style-desc">Direct reality checks to push you forward</span>
+              </button>
+            </div>
+            <button class="back-btn-onboard standalone" onclick="prevOnboardingStep(4)">← Back</button>
+          </div>
+          
+          <div id="step-6" class="onboarding-step">
+            <h2>Meet Your Healing Companion</h2>
+            <p class="step-helper">This little friend will support you on your journey.</p>
+            <div class="companion-preview-container">
+              <div class="companion-preview" id="companion-preview"></div>
+            </div>
+            <div class="companion-setup">
+              <div class="companion-name-setup">
+                <label for="companion-name-onboarding">Give them a name:</label>
+                <input type="text" id="companion-name-onboarding" placeholder="e.g., Hope, Buddy, Luna..." maxlength="20" />
+              </div>
+              <div class="companion-style-setup">
+                <p>Choose their style:</p>
+                <div class="companion-style-grid">
+                  <button class="companion-style-option active" data-gender="female" onclick="selectCompanionStyle('female')">
+                    <span class="style-preview pink-heart">💗</span>
+                    <span>Pink Heart</span>
+                  </button>
+                  <button class="companion-style-option" data-gender="male" onclick="selectCompanionStyle('male')">
+                    <span class="style-preview blue-heart">💙</span>
+                    <span>Blue Heart</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="onboarding-nav">
+              <button class="back-btn-onboard" onclick="prevOnboardingStep(5)">← Back</button>
+              <button onclick="nextOnboardingStep(7)">Continue</button>
+            </div>
+          </div>
+          
+          <div id="step-7" class="onboarding-step">
+            <div class="welcome-icon">🌅</div>
+            <h2 id="welcome-message"></h2>
+            <p class="welcome-sub">We're here to walk this journey with you. No judgment. No timeline. Just support.</p>
+            <div class="welcome-promise">
+              <div class="promise-item">✨ Personalized for your experience</div>
+              <div class="promise-item">🔒 100% private - your data stays yours</div>
+              <div class="promise-item">💪 45+ tools to help you heal</div>
+            </div>
+            <div class="onboarding-nav">
+              <button class="back-btn-onboard" onclick="prevOnboardingStep(6)">← Back</button>
+              <button onclick="completeOnboarding()" class="start-btn">Begin Your Healing Journey</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="main-screen" class="screen" style="display:none;">
+      <div class="ambient-bg" id="ambient-bg"></div>
+      <header>
+        <div class="header-left">
+          <span class="heart-icon">💗</span>
+          <span id="greeting"></span>
+        </div>
+        <div class="header-right">
+          <div class="day-counter" id="day-counter"></div>
+          <div id="auth-section">
+            <a href="/api/login" class="login-btn" id="login-btn">Sign In</a>
+            <div class="user-profile" id="user-profile" style="display:none;">
+              <img id="user-avatar" src="" alt="Profile" class="user-avatar">
+              <a href="/api/logout" class="logout-btn">Sign Out</a>
+            </div>
+          </div>
+          <button class="theme-toggle" onclick="toggleDarkMode()" id="theme-btn">🌙</button>
+        </div>
+      </header>
+
+      <nav id="main-nav">
+        <button onclick="showPage('home')" class="nav-btn active" data-page="home">🏠</button>
+        <button onclick="showPage('chat')" class="nav-btn" data-page="chat">💬</button>
+        <button onclick="showPage('journal')" class="nav-btn" data-page="journal">📓</button>
+        <button onclick="showPage('activities')" class="nav-btn" data-page="activities">🎯</button>
+        <button onclick="showPage('wellness')" class="nav-btn" data-page="wellness">🌿</button>
+        <button onclick="showPage('mood')" class="nav-btn" data-page="mood">📊</button>
+        <button onclick="showPage('achievements')" class="nav-btn" data-page="achievements">🏆</button>
+        <button onclick="showPage('more')" class="nav-btn" data-page="more">⋯</button>
+      </nav>
+
+      <main>
+        <section id="home" class="page active">
+          <div class="streak-banner" id="streak-banner">
+            <span class="streak-icon">🔥</span>
+            <span id="streak-count">0 Day Streak</span>
+          </div>
+
+          <div class="healing-spark card" id="healing-spark">
+            <div class="spark-header">
+              <span class="spark-icon">✨</span>
+              <h3>Today's Healing Spark</h3>
+            </div>
+            <div class="spark-content">
+              <p class="spark-affirmation" id="spark-affirmation"></p>
+              <div class="_spark-ritual" id="spark-ritual">
+                <span class="ritual-label">Quick Ritual:</span>
+                <span class="ritual-text" id="ritual-text"></span>
+              </div>
+            </div>
+            <button class="spark-action-btn" onclick="completeHealingSpark()" id="spark-btn">
+              <span>I did this</span>
+              <span class="spark-check">✓</span>
+            </button>
+          </div>
+
+          <div class="self-care-reminder card" id="self-care-reminder" style="display:none;">
+            <span class="reminder-icon">💧</span>
+            <span id="reminder-text"></span>
+            <button onclick="dismissReminder()" class="dismiss-btn">✓</button>
+          </div>
+
+          <div class="emergency-banner" onclick="showPage('emergency')">
+            <span class="emergency-icon">🚨</span>
+            <span>Tempted to text your ex?</span>
+            <span class="emergency-arrow">→</span>
+          </div>
+
+          <div class="daily-challenge card" id="daily-challenge-card">
+            <h3>🎯 Today's Challenge</h3>
+            <p id="daily-challenge-text"></p>
+            <button onclick="completeChallenge()" id="challenge-btn">Mark Complete</button>
+          </div>
+
+          <div class="daily-checkin card">
+            <h3>Daily Check-in</h3>
+            <p id="checkin-prompt">How are you feeling today?</p>
+            <div class="quick-moods">
+              <button onclick="quickMoodCheck('😊')">😊</button>
+              <button onclick="quickMoodCheck('🙂')">🙂</button>
+              <button onclick="quickMoodCheck('😐')">😐</button>
+              <button onclick="quickMoodCheck('😢')">😢</button>
+              <button onclick="quickMoodCheck('💔')">💔</button>
+            </div>
+          </div>
+
+          <div class="affirmation-card card">
+            <p id="daily-affirmation"></p>
+            <button onclick="newAffirmation()" class="refresh-btn">✨ New affirmation</button>
+            <button onclick="showCustomAffirmations()" class="refresh-btn">➕ Add your own</button>
+          </div>
+
+          <div class="expert-tip card">
+            <h4>💡 Expert Tip</h4>
+            <p id="expert-tip-text"></p>
+            <button onclick="newExpertTip()" class="refresh-btn">Next tip</button>
+          </div>
+
+          <div class="quote-card card">
+            <blockquote id="daily-quote"></blockquote>
+            <button onclick="newQuote()" class="refresh-btn">🔄 New quote</button>
+          </div>
+
+          <div class="survivor-quote card" id="survivor-quote-card">
+            <h4>💪 Real Stories of Healing</h4>
+            <blockquote id="survivor-quote-text"></blockquote>
+            <p class="survivor-attribution" id="survivor-attribution"></p>
+            <button onclick="newSurvivorQuote()" class="refresh-btn">Next story</button>
+          </div>
+
+          <div class="personalized-card card" id="cheating-card" style="display:none;">
+            <h4>🛡️ For Your Healing</h4>
+            <p id="personalized-affirmation"></p>
+            <button onclick="newPersonalizedAffirmation()" class="refresh-btn">✨ Another</button>
+          </div>
+
+          <div class="personalized-card card" id="rediscovery-prompt-card" style="display:none;">
+            <h4>🪞 Rediscovering You</h4>
+            <p class="rediscovery-title" id="rediscovery-title"></p>
+            <p class="rediscovery-prompt" id="rediscovery-prompt"></p>
+            <button onclick="newRediscoveryPrompt()" class="refresh-btn">Next prompt</button>
+          </div>
+
+          <div class="progress-preview card" onclick="showPage('achievements')">
+            <h4>Your Journey</h4>
+            <div class="mini-progress">
+              <div class="mini-progress-bar" id="mini-progress"></div>
+            </div>
+            <p id="next-milestone"></p>
+          </div>
+        </section>
+
+        <section id="emergency" class="page">
+          <div class="emergency-header">
+            <h2>🚨 Emergency Mode</h2>
+            <p>You're stronger than this urge. Let's get through it together.</p>
+          </div>
+
+          <div class="crisis-resources card">
+            <h3>📞 Crisis Resources</h3>
+            <p>If you're in crisis, please reach out:</p>
+            <div class="crisis-list">
+              <a href="tel:988" class="crisis-link">988 Suicide & Crisis Lifeline</a>
+              <a href="tel:1-800-662-4357" class="crisis-link">SAMHSA Helpline: 1-800-662-4357</a>
+              <a href="https://www.crisistextline.org" target="_blank" class="crisis-link">Crisis Text Line: Text HOME to 741741</a>
+              <a href="https://www.betterhelp.com" target="_blank" class="crisis-link">BetterHelp Online Therapy</a>
+            </div>
+          </div>
+
+          <div class="no-contact-counter card">
+            <h3>📵 No Contact Counter</h3>
+            <div id="no-contact-display">0 days</div>
+            <p id="no-contact-message">Every day without contact is a victory</p>
+            <div class="no-contact-actions">
+              <button onclick="resetNoContact()" class="secondary-btn">I broke no-contact</button>
+              <button onclick="startNoContact()" id="start-nc-btn">Start counting</button>
+            </div>
+          </div>
+
+          <div class="emergency-timer card">
+            <h3>Wait 10 Minutes</h3>
+            <p>Most urges pass within 10 minutes. Let's breathe through this.</p>
+            <div id="timer-display">10:00</div>
+            <button onclick="startTimer()" id="timer-btn">Start Timer</button>
+          </div>
+
+          <div class="emergency-activities">
+            <h3>Distraction Activities</h3>
+            <div class="activity-grid">
+              <button onclick="startBreathing()" class="activity-btn">
+                <span>🌬️</span>
+                <p>Breathing Exercise</p>
+              </button>
+              <button onclick="showReminders()" class="activity-btn">
+                <span>📝</span>
+                <p>Why You Broke Up</p>
+              </button>
+              <button onclick="startGrounding()" class="activity-btn">
+                <span>🌍</span>
+                <p>Grounding 5-4-3-2-1</p>
+              </button>
+              <button onclick="showFutureSelf()" class="activity-btn">
+                <span>🔮</span>
+                <p>Letter from Future You</p>
+              </button>
+              <button onclick="showDistractions()" class="activity-btn">
+                <span>🎲</span>
+                <p>Healthy Distractions</p>
+              </button>
+              <button onclick="contactSupportCircle()" class="activity-btn">
+                <span>👥</span>
+                <p>Call Support Circle</p>
+              </button>
+            </div>
+          </div>
+
+          <div class="ai-tools-section">
+            <h4>🤖 AI-Powered Healing Tools</h4>
+            <p class="section-intro">Personalized support powered by AI - sign in to use these tools</p>
+            <div class="activity-grid">
+              <button onclick="openAICoach()" class="activity-btn ai-tool">
+                <span>💬</span>
+                <p>AI Healing Coach</p>
+              </button>
+              <button onclick="openClosureCeremony()" class="activity-btn ai-tool">
+                <span>🕯️</span>
+                <p>Closure Ceremony</p>
+              </button>
+              <button onclick="openPatternAnalysis()" class="activity-btn ai-tool">
+                <span>🔍</span>
+                <p>Pattern Detector</p>
+              </button>
+              <button onclick="openMemoryReframe()" class="activity-btn ai-tool">
+                <span>🧠</span>
+                <p>Memory Reframer</p>
+              </button>
+              <button onclick="openReboundCheck()" class="activity-btn ai-tool">
+                <span>⚠️</span>
+                <p>Rebound Warning</p>
+              </button>
+              <button onclick="openGrowthDashboard()" class="activity-btn ai-tool">
+                <span>📊</span>
+                <p>Growth Dashboard</p>
+              </button>
+            </div>
+          </div>
+
+          <div id="breathing-exercise" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('breathing')" class="close-btn">×</button>
+              <h3>Breathe With Me</h3>
+              <div class="breathing-circle" id="breathing-circle">
+                <span id="breath-text">Breathe In</span>
+              </div>
+              <p id="breath-count">Cycle 1 of 5</p>
+            </div>
+          </div>
+
+          <div id="grounding-exercise" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('grounding')" class="close-btn">×</button>
+              <h3>5-4-3-2-1 Grounding</h3>
+              <div id="grounding-steps">
+                <p id="grounding-prompt">Name <strong>5 things</strong> you can SEE right now</p>
+                <textarea id="grounding-input" placeholder="Type them here..."></textarea>
+                <button onclick="nextGroundingStep()">Next →</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="reminders-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('reminders')" class="close-btn">×</button>
+              <h3>Remember Why</h3>
+              <p>Write down why the relationship ended. This isn't about blame — it's about clarity.</p>
+              <textarea id="breakup-reasons" placeholder="The reasons we broke up..."></textarea>
+              <button onclick="saveReasons()">Save for next time</button>
+              <div id="saved-reasons"></div>
+            </div>
+          </div>
+
+          <div id="future-self-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('future-self')" class="close-btn">×</button>
+              <h3>A Letter From Future You</h3>
+              <div class="future-letter">
+                <p id="future-letter-text"></p>
+              </div>
+            </div>
+          </div>
+
+          <div id="distractions-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('distractions')" class="close-btn">×</button>
+              <h3>🎲 Healthy Distractions</h3>
+              <p>Here are some ideas to redirect your energy:</p>
+              <div id="distraction-list" class="distraction-list"></div>
+              <button onclick="refreshDistractions()" class="save-btn">Give me more ideas</button>
+            </div>
+          </div>
+
+          <div id="support-circle-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeExercise('support-circle')" class="close-btn">×</button>
+              <h3>👥 Your Support Circle</h3>
+              <p>People who have your back:</p>
+              <div id="support-circle-list"></div>
+              <p style="margin-top: 15px; color: var(--text-light);">Reach out to someone. You don't have to go through this alone.</p>
+            </div>
+          </div>
+
+          <button onclick="showPage('home')" class="back-btn">← Back to Home</button>
+        </section>
+
+        <section id="chat" class="page">
+          <div class="chat-container ai-coach-container">
+            <div class="chat-header">
+              <h3>💬 AI Healing Coach</h3>
+              <p>Your personal AI coach is here 24/7 to support your healing journey</p>
+              <p class="ai-notice" id="ai-coach-notice">Sign in to chat with your AI coach</p>
+            </div>
+            <div id="chat-box" class="ai-chat-messages"></div>
+            <div class="chat-input-container">
+              <textarea id="chat-input" placeholder="Share what's on your heart..." rows="2" onkeypress="handleAIChatEnter(event)"></textarea>
+              <button onclick="sendToAICoachMain()" id="send-btn" class="send-btn">Send 💌</button>
+            </div>
+          </div>
+        </section>
+
+        <section id="journal" class="page">
+          <div class="journal-header">
+            <h3>📓 Your Journal</h3>
+            <p id="journal-prompt-display">A safe space for your thoughts</p>
+          </div>
+          
+          <div class="journal-tabs">
+            <button class="journal-tab active" onclick="showJournalTab('write')">Write</button>
+            <button class="journal-tab" onclick="showJournalTab('voice')">Voice</button>
+            <button class="journal-tab" onclick="showJournalTab('patterns')">Patterns</button>
+            <button class="journal-tab" onclick="showJournalTab('weekly')">Weekly</button>
+            <button class="journal-tab" onclick="showJournalTab('timecapsule')">Capsule</button>
+          </div>
+          
+          <div id="journal-write" class="journal-section active">
+            <button onclick="getPersonalizedPrompt()" class="prompt-btn">✨ Get a personalized prompt</button>
+            <textarea id="journal-entry" placeholder="Write freely... no one will read this but you."></textarea>
+            <button onclick="saveJournal()" class="save-btn">Save Entry</button>
+            <button onclick="exportJournal()" class="export-btn">📥 Export Journal</button>
+
+            <div class="journal-entries">
+              <h4>Past Entries</h4>
+              <div id="journal-list"></div>
+            </div>
+          </div>
+
+          <div id="journal-voice" class="journal-section">
+            <h4>🎙️ Voice Journal</h4>
+            <p class="section-intro">Sometimes it's easier to speak than write. Record your thoughts.</p>
+            
+            <div class="voice-recorder">
+              <button onclick="toggleVoiceRecording()" id="voice-record-btn" class="voice-btn">
+                <span id="voice-btn-icon">🎙️</span>
+                <span id="voice-btn-text">Start Recording</span>
+              </button>
+              <div id="recording-status"></div>
+              <div id="voice-timer" style="display:none;">0:00</div>
+            </div>
+
+            <div class="voice-entries">
+              <h4>Saved Recordings</h4>
+              <div id="voice-journal-list"></div>
+            </div>
+          </div>
+          
+          <div id="journal-patterns" class="journal-section">
+            <h4>🔄 Relationship Patterns</h4>
+            <p class="section-intro">Understanding patterns helps you grow. Reflect honestly.</p>
+            
+            <div class="pattern-question">
+              <label>What patterns do I tend to repeat in relationships?</label>
+              <textarea id="pattern-1" placeholder="e.g., I tend to lose myself, I ignore red flags..."></textarea>
+            </div>
+            
+            <div class="pattern-question">
+              <label>What do I need to feel secure in a relationship?</label>
+              <textarea id="pattern-2" placeholder="e.g., consistent communication, quality time..."></textarea>
+            </div>
+            
+            <div class="pattern-question">
+              <label>What are my non-negotiables for next time?</label>
+              <textarea id="pattern-3" placeholder="e.g., must respect my boundaries, must have their own goals..."></textarea>
+            </div>
+            
+            <div class="pattern-question">
+              <label>What will I do differently next time?</label>
+              <textarea id="pattern-4" placeholder="e.g., take things slower, trust my gut..."></textarea>
+            </div>
+            
+            <button onclick="savePatterns()" class="save-btn">Save Reflections</button>
+          </div>
+          
+          <div id="journal-weekly" class="journal-section">
+            <h4>📅 Weekly Reflection</h4>
+            <p class="section-intro">Take a moment to reflect on your week.</p>
+            
+            <div class="weekly-question">
+              <label>What was the hardest moment this week?</label>
+              <textarea id="weekly-1" placeholder="Describe the challenge..."></textarea>
+            </div>
+            
+            <div class="weekly-question">
+              <label>What was a small win or moment of peace?</label>
+              <textarea id="weekly-2" placeholder="Even tiny victories count..."></textarea>
+            </div>
+            
+            <div class="weekly-question">
+              <label>What are you grateful for this week?</label>
+              <textarea id="weekly-3" placeholder="List 3 things..."></textarea>
+            </div>
+            
+            <div class="weekly-question">
+              <label>What do you want to focus on next week?</label>
+              <textarea id="weekly-4" placeholder="Set an intention..."></textarea>
+            </div>
+            
+            <button onclick="saveWeeklyReflection()" class="save-btn">Save Weekly Reflection</button>
+            
+            <div id="past-weekly-reflections"></div>
+          </div>
+          
+          <div id="journal-timecapsule" class="journal-section">
+            <h4>💌 Letter to Future Self</h4>
+            <p class="section-intro">Write a message to receive later. What do you want future you to remember?</p>
+            
+            <textarea id="timecapsule-letter" placeholder="Dear future me..."></textarea>
+            
+            <div class="timecapsule-options">
+              <label>Deliver this letter in:</label>
+              <select id="timecapsule-delay">
+                <option value="7">1 week</option>
+                <option value="30">1 month</option>
+                <option value="90">3 months</option>
+                <option value="180">6 months</option>
+                <option value="365">1 year</option>
+              </select>
+            </div>
+            
+            <button onclick="saveTimeCapsule()" class="save-btn">🕐 Seal Time Capsule</button>
+            
+            <div id="pending-capsules"></div>
+            <div id="opened-capsules"></div>
+          </div>
+        </section>
+
+        <section id="activities" class="page">
+          <h3>🎯 Guided Activities</h3>
+          <p class="activities-intro">Healing exercises designed to help you process and grow</p>
+
+          <div class="activities-grid">
+            <div class="activity-card" onclick="startActivity('unsent-letter')">
+              <span class="activity-icon">✉️</span>
+              <h4>Unsent Letter</h4>
+              <p>Write what you never got to say</p>
+            </div>
+
+            <div class="activity-card" onclick="startActivity('gratitude')">
+              <span class="activity-icon">🙏</span>
+              <h4>Gratitude List</h4>
+              <p>Find light in the darkness</p>
+            </div>
+
+            <div class="activity-card" onclick="startActivity('release')">
+              <span class="activity-icon">🎈</span>
+              <h4>Release Ritual</h4>
+              <p>Let go of what no longer serves you</p>
+            </div>
+
+            <div class="activity-card" onclick="startActivity('self-love')">
+              <span class="activity-icon">💝</span>
+              <h4>Self-Love Letter</h4>
+              <p>Remind yourself of your worth</p>
+            </div>
+
+            <div class="activity-card" onclick="startActivity('lessons')">
+              <span class="activity-icon">📚</span>
+              <h4>Lessons Learned</h4>
+              <p>Turn pain into wisdom</p>
+            </div>
+
+            <div class="activity-card" onclick="startActivity('future-vision')">
+              <span class="activity-icon">🌟</span>
+              <h4>Future Vision</h4>
+              <p>Imagine your healed self</p>
+            </div>
+          </div>
+
+          <div class="breakup-stages card">
+            <h4>🗺️ The Grief Journey</h4>
+            <p class="stages-subtitle">Understanding where you are in your healing</p>
+            <div class="stages-timeline" id="stages-timeline"></div>
+            <button onclick="showStageDetails()" class="secondary-btn">Learn more about each stage</button>
+          </div>
+
+          <div class="rediscovery-section card" id="rediscovery-section" style="display:none;">
+            <h4>🪞 Rediscovering Yourself</h4>
+            <p class="rediscovery-intro">Exercises to find yourself again</p>
+            <div class="rediscovery-grid" id="rediscovery-grid"></div>
+          </div>
+
+          <div id="activity-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content activity-content">
+              <button onclick="closeActivity()" class="close-btn">×</button>
+              <h3 id="activity-title"></h3>
+              <p id="activity-instructions"></p>
+              <textarea id="activity-text" placeholder="Start writing..."></textarea>
+              <div class="activity-actions">
+                <button onclick="saveActivity()" class="save-btn">Save & Complete</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="wellness" class="page">
+          <h3>🌿 Wellness Center</h3>
+          <p class="section-intro">Tools for your mind, body, and spirit</p>
+
+          <div class="wellness-tabs">
+            <button class="wellness-tab active" onclick="showWellnessTab('meditation')">Meditation</button>
+            <button class="wellness-tab" onclick="showWellnessTab('sleep')">Sleep</button>
+            <button class="wellness-tab" onclick="showWellnessTab('selfcare')">Self-Care</button>
+            <button class="wellness-tab" onclick="showWellnessTab('resources')">Resources</button>
+          </div>
+
+          <div id="wellness-meditation" class="wellness-section active">
+            <h4>🎵 Healing Playlists</h4>
+            <p class="playlist-intro">Music for every mood - click to open in Spotify</p>
+            <div class="spotify-grid" id="spotify-grid"></div>
+
+            <h4 style="margin-top:25px;">🧘 Guided Meditations</h4>
+            <div class="meditation-grid">
+              <div class="meditation-card" onclick="startMeditation('heartbreak')">
+                <span class="meditation-icon">💔</span>
+                <h4>Healing Heartbreak</h4>
+                <p>5 min</p>
+              </div>
+
+              <div class="meditation-card" onclick="startMeditation('letting-go')">
+                <span class="meditation-icon">🎈</span>
+                <h4>Letting Go</h4>
+                <p>7 min</p>
+              </div>
+
+              <div class="meditation-card" onclick="startMeditation('self-compassion')">
+                <span class="meditation-icon">💕</span>
+                <h4>Self-Compassion</h4>
+                <p>5 min</p>
+              </div>
+
+              <div class="meditation-card" onclick="startMeditation('sleep')">
+                <span class="meditation-icon">🌙</span>
+                <h4>Sleep & Release</h4>
+                <p>10 min</p>
+              </div>
+
+              <div class="meditation-card" onclick="startMeditation('morning')">
+                <span class="meditation-icon">🌅</span>
+                <h4>Morning Strength</h4>
+                <p>5 min</p>
+              </div>
+
+              <div class="meditation-card" onclick="startMeditation('anxiety')">
+                <span class="meditation-icon">🌊</span>
+                <h4>Calm Anxiety</h4>
+                <p>6 min</p>
+              </div>
+            </div>
+
+            <h4 style="margin-top: 30px;">🎵 Healing Playlists</h4>
+            <div class="playlist-grid">
+              <div class="playlist-card" onclick="showPlaylist('sad')">
+                <span>😢</span>
+                <h4>Feel the Feels</h4>
+              </div>
+              <div class="playlist-card" onclick="showPlaylist('angry')">
+                <span>😤</span>
+                <h4>Let It Out</h4>
+              </div>
+              <div class="playlist-card" onclick="showPlaylist('empowered')">
+                <span>💪</span>
+                <h4>Rising Strong</h4>
+              </div>
+              <div class="playlist-card" onclick="showPlaylist('peaceful')">
+                <span>🕊️</span>
+                <h4>Finding Peace</h4>
+              </div>
+            </div>
+          </div>
+
+          <div id="wellness-sleep" class="wellness-section">
+            <h4>😴 Sleep Tracker</h4>
+            <p class="section-intro">Heartbreak affects sleep. Track yours to improve it.</p>
+            
+            <div class="sleep-input card">
+              <div class="sleep-field">
+                <label>How many hours did you sleep last night?</label>
+                <input type="number" id="sleep-hours" min="0" max="24" step="0.5" placeholder="8" />
+              </div>
+              <div class="sleep-field">
+                <label>Sleep quality</label>
+                <div class="sleep-quality-btns">
+                  <button onclick="selectSleepQuality(1)" class="quality-btn" data-quality="1">😫</button>
+                  <button onclick="selectSleepQuality(2)" class="quality-btn" data-quality="2">😕</button>
+                  <button onclick="selectSleepQuality(3)" class="quality-btn" data-quality="3">😐</button>
+                  <button onclick="selectSleepQuality(4)" class="quality-btn" data-quality="4">🙂</button>
+                  <button onclick="selectSleepQuality(5)" class="quality-btn" data-quality="5">😴</button>
+                </div>
+              </div>
+              <textarea id="sleep-notes" placeholder="Any dreams or thoughts from the night? (optional)"></textarea>
+              <button onclick="saveSleep()" class="save-btn">Log Sleep</button>
+            </div>
+
+            <div class="sleep-history card">
+              <h4>Sleep History</h4>
+              <div id="sleep-chart"></div>
+              <div id="sleep-list"></div>
+            </div>
+          </div>
+
+          <div id="wellness-selfcare" class="wellness-section">
+            <h4>💆 Self-Care Plan</h4>
+            <p class="section-intro">Build a personalized routine to support your healing</p>
+            
+            <div class="selfcare-checklist card">
+              <h5>Today's Self-Care</h5>
+              <div id="selfcare-items">
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('hydrate')" id="sc-hydrate" />
+                  <span>💧 Drink 8 glasses of water</span>
+                </label>
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('eat')" id="sc-eat" />
+                  <span>🍎 Eat 3 nourishing meals</span>
+                </label>
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('move')" id="sc-move" />
+                  <span>🚶 Move your body for 20 min</span>
+                </label>
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('outside')" id="sc-outside" />
+                  <span>🌳 Spend time outside</span>
+                </label>
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('connect')" id="sc-connect" />
+                  <span>👋 Connect with someone</span>
+                </label>
+                <label class="selfcare-item">
+                  <input type="checkbox" onchange="toggleSelfCare('rest')" id="sc-rest" />
+                  <span>😴 Get enough sleep</span>
+                </label>
+              </div>
+              <div class="selfcare-progress">
+                <div class="selfcare-progress-bar" id="selfcare-progress-bar"></div>
+              </div>
+              <p id="selfcare-message"></p>
+            </div>
+
+            <div class="healing-plan card">
+              <h5>📋 My Healing Plan</h5>
+              <p class="section-intro">Based on where you are in your journey:</p>
+              <div id="healing-plan-content"></div>
+              <button onclick="generateHealingPlan()" class="save-btn">Generate New Plan</button>
+            </div>
+          </div>
+
+          <div id="wellness-resources" class="wellness-section">
+            <h4>📚 Healing Resources</h4>
+            
+            <div class="resource-category card">
+              <h5>📖 Recommended Reading</h5>
+              <div id="book-list" class="resource-list"></div>
+            </div>
+
+            <div class="resource-category card">
+              <h5>🎧 Podcasts</h5>
+              <div id="podcast-list" class="resource-list"></div>
+            </div>
+
+            <div class="resource-category card">
+              <h5>💡 Expert Tips</h5>
+              <div id="expert-tips-list" class="resource-list"></div>
+            </div>
+          </div>
+
+          <div id="meditation-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content meditation-content">
+              <button onclick="closeMeditation()" class="close-btn">×</button>
+              <h3 id="meditation-title"></h3>
+              <div class="meditation-player">
+                <div class="meditation-circle" id="meditation-circle">
+                  <span id="meditation-timer">5:00</span>
+                </div>
+                <p id="meditation-instruction" class="meditation-text"></p>
+                <button onclick="pauseMeditation()" id="meditation-pause-btn">Pause</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="playlist-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closePlaylist()" class="close-btn">×</button>
+              <h3 id="playlist-title"></h3>
+              <div id="playlist-songs"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="mood" class="page">
+          <h3>📊 Mood Tracker</h3>
+          
+          <div class="mood-input card">
+            <h4>How are you feeling right now?</h4>
+            <div class="mood-grid">
+              <button class="mood-btn" onclick="saveMoodWithNote('😊', 'Happy')">😊<span>Happy</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('🙂', 'Okay')">🙂<span>Okay</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('😐', 'Meh')">😐<span>Meh</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('😢', 'Sad')">😢<span>Sad</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('😤', 'Angry')">😤<span>Angry</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('💔', 'Heartbroken')">💔<span>Heartbroken</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('😰', 'Anxious')">😰<span>Anxious</span></button>
+              <button class="mood-btn" onclick="saveMoodWithNote('🌱', 'Hopeful')">🌱<span>Hopeful</span></button>
+            </div>
+            <textarea id="mood-note" placeholder="Add a note about why you feel this way (optional)..."></textarea>
+          </div>
+
+          <div class="mood-insights card">
+            <h4>Your Mood Journey</h4>
+            <div class="mood-chart" id="mood-chart"></div>
+            <p id="mood-insight"></p>
+          </div>
+
+          <div class="mood-trends card">
+            <h4>📈 Mood Trends</h4>
+            <p class="trend-subtitle">Your progress over time</p>
+            <canvas id="mood-trend-chart" width="300" height="150"></canvas>
+            <div class="trend-summary" id="trend-summary"></div>
+          </div>
+
+          <div class="before-after card" onclick="showPage('reflection')">
+            <h4>📈 Before & After</h4>
+            <p>See how far you've come</p>
+            <span class="arrow">→</span>
+          </div>
+
+          <div class="mood-history-section">
+            <h4>Recent Moods</h4>
+            <div id="mood-history"></div>
+          </div>
+        </section>
+
+        <section id="reflection" class="page">
+          <h3>📈 Before & After Reflections</h3>
+          <p class="section-intro">Compare how you felt then vs. now</p>
+
+          <div class="reflection-comparison card">
+            <div class="reflection-then">
+              <h4>Day 1</h4>
+              <p id="reflection-day1-mood"></p>
+              <p id="reflection-day1-text"></p>
+            </div>
+            <div class="reflection-arrow">→</div>
+            <div class="reflection-now">
+              <h4>Today (Day <span id="reflection-today-day"></span>)</h4>
+              <p id="reflection-today-mood"></p>
+            </div>
+          </div>
+
+          <div class="reflection-prompts card">
+            <h4>Reflect on Your Growth</h4>
+            <div class="reflection-question">
+              <label>What's different about how I feel now compared to Day 1?</label>
+              <textarea id="reflection-1" placeholder="Think about your emotions, thoughts, daily life..."></textarea>
+            </div>
+            <div class="reflection-question">
+              <label>What have I learned about myself?</label>
+              <textarea id="reflection-2" placeholder="Strengths you've discovered, things you've realized..."></textarea>
+            </div>
+            <div class="reflection-question">
+              <label>What am I proud of?</label>
+              <textarea id="reflection-3" placeholder="Small or big wins..."></textarea>
+            </div>
+            <button onclick="saveReflection()" class="save-btn">Save Reflection</button>
+          </div>
+
+          <div id="past-reflections"></div>
+
+          <button onclick="showPage('mood')" class="back-btn">← Back to Mood</button>
+        </section>
+
+        <section id="achievements" class="page">
+          <h3>🏆 Your Healing Journey</h3>
+          
+          <div class="journey-stats card">
+            <div class="stat">
+              <span class="stat-number" id="days-healing">0</span>
+              <span class="stat-label">Days Healing</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="streak-stat">0</span>
+              <span class="stat-label">Day Streak</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="journal-count">0</span>
+              <span class="stat-label">Journal Entries</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" id="activities-count">0</span>
+              <span class="stat-label">Activities Done</span>
+            </div>
+          </div>
+
+          <div class="healing-path card">
+            <h4>🛤️ Your Healing Path</h4>
+            <p class="path-intro">Watch your journey unfold as you progress through each stage</p>
+            <div class="healing-timeline" id="healing-timeline">
+              <div class="timeline-stage" data-stage="1" data-days="0">
+                <div class="stage-icon">🌱</div>
+                <div class="stage-info">
+                  <span class="stage-name">Day One</span>
+                  <span class="stage-desc">The first step of your journey</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="2" data-days="7">
+                <div class="stage-icon">🌿</div>
+                <div class="stage-info">
+                  <span class="stage-name">One Week Strong</span>
+                  <span class="stage-desc">7 days of healing</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="3" data-days="14">
+                <div class="stage-icon">🌸</div>
+                <div class="stage-info">
+                  <span class="stage-name">Two Weeks Warrior</span>
+                  <span class="stage-desc">Growing stronger every day</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="4" data-days="30">
+                <div class="stage-icon">🌺</div>
+                <div class="stage-info">
+                  <span class="stage-name">Month of Growth</span>
+                  <span class="stage-desc">30 days of transformation</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="5" data-days="60">
+                <div class="stage-icon">🌻</div>
+                <div class="stage-info">
+                  <span class="stage-name">Rising Phoenix</span>
+                  <span class="stage-desc">Two months of resilience</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="6" data-days="90">
+                <div class="stage-icon">🦋</div>
+                <div class="stage-info">
+                  <span class="stage-name">Transformed</span>
+                  <span class="stage-desc">90 days - A new you emerges</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="7" data-days="180">
+                <div class="stage-icon">👑</div>
+                <div class="stage-info">
+                  <span class="stage-name">Healing Royalty</span>
+                  <span class="stage-desc">6 months - You reign supreme</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+              <div class="timeline-connector"></div>
+              <div class="timeline-stage" data-stage="8" data-days="365">
+                <div class="stage-icon">⭐</div>
+                <div class="stage-info">
+                  <span class="stage-name">One Year Wonder</span>
+                  <span class="stage-desc">A full year of growth - You're amazing!</span>
+                </div>
+                <div class="stage-lock">🔒</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="milestones card">
+            <h4>Milestones</h4>
+            <div class="milestone-list" id="milestone-list"></div>
+          </div>
+
+          <div class="badges card">
+            <h4>Your Badges</h4>
+            <div class="badge-grid" id="badge-grid"></div>
+          </div>
+
+          <div class="milestone-postcard card" id="milestone-postcard-container" style="display: none;">
+            <h4>📬 Your Milestone Postcard</h4>
+            <p style="margin-bottom: 15px; color: var(--text-light);">Celebrate your healing journey with a keepsake</p>
+            <div class="postcard-preview" id="postcard-preview">
+              <div class="postcard-inner">
+                <div class="postcard-header">
+                  <span class="postcard-badge">🎉</span>
+                  <span class="postcard-title">Healing Hero</span>
+                </div>
+                <p class="postcard-message" id="postcard-message">You've reached an amazing milestone!</p>
+                <div class="postcard-stats">
+                  <span id="postcard-days">0 Days</span>
+                  <span id="postcard-date"></span>
+                </div>
+                <p class="postcard-signature">With love, Healing Hearts 💕</p>
+              </div>
+            </div>
+            <button onclick="generateNewPostcard()" class="save-btn" style="margin-top: 15px;">🎨 Generate New Design</button>
+          </div>
+
+          <div class="gratitude-wall-preview card" onclick="showPage('gratitude-wall')">
+            <h4>🙏 Gratitude Wall</h4>
+            <p>View your collection of gratitudes</p>
+            <span class="arrow">→</span>
+          </div>
+
+          <div class="vision-board-preview card" onclick="showPage('vision-board')">
+            <h4>🌟 Vision Board</h4>
+            <p>Your healed future, visualized</p>
+            <span class="arrow">→</span>
+          </div>
+        </section>
+
+        <section id="gratitude-wall" class="page">
+          <h3>🙏 Gratitude Wall</h3>
+          <p class="section-intro">A visual collection of everything you're grateful for</p>
+
+          <div class="gratitude-input card">
+            <input type="text" id="gratitude-input" placeholder="I'm grateful for..." />
+            <button onclick="addGratitude()" class="save-btn">Add to Wall</button>
+          </div>
+
+          <div class="gratitude-grid" id="gratitude-wall-grid"></div>
+
+          <button onclick="showPage('achievements')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="vision-board" class="page">
+          <h3>🌟 Vision Board</h3>
+          <p class="section-intro">Create a visual representation of your healed, happy future</p>
+
+          <div class="vision-input card">
+            <textarea id="vision-text" placeholder="Describe something you envision for your future..."></textarea>
+            <select id="vision-category">
+              <option value="love">💕 Future Love</option>
+              <option value="self">🌱 Personal Growth</option>
+              <option value="career">💼 Career/Goals</option>
+              <option value="joy">✨ Joy & Happiness</option>
+              <option value="health">💪 Health & Wellness</option>
+            </select>
+            <button onclick="addVision()" class="save-btn">Add to Vision Board</button>
+          </div>
+
+          <div class="vision-grid" id="vision-board-grid"></div>
+
+          <button onclick="showPage('achievements')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="more" class="page">
+          <h3>⚙️ More Features</h3>
+
+          <div class="more-grid">
+            <div class="more-card" onclick="showPage('quiz')">
+              <span>💕</span>
+              <h4>Dating Readiness Quiz</h4>
+              <p>Are you ready to date again?</p>
+            </div>
+
+            <div class="more-card" onclick="showPage('photos')">
+              <span>📸</span>
+              <h4>Photo Memory Vault</h4>
+              <p>Store and release memories</p>
+            </div>
+
+            <div class="more-card" onclick="showPage('support-circle')">
+              <span>👥</span>
+              <h4>Support Circle</h4>
+              <p>Your trusted people</p>
+            </div>
+
+            <div class="more-card" onclick="showPage('holidays')">
+              <span>📅</span>
+              <h4>Holiday Survival Kit</h4>
+              <p>Get through difficult dates</p>
+            </div>
+
+            <div class="more-card" onclick="showPage('community')">
+              <span>💬</span>
+              <h4>Community Support</h4>
+              <p>You're not alone</p>
+            </div>
+
+            <div class="more-card" onclick="showCustomAffirmations()">
+              <span>✨</span>
+              <h4>Custom Affirmations</h4>
+              <p>Add your own mantras</p>
+            </div>
+
+            <div class="more-card" onclick="showPage('themes')">
+              <span>🎨</span>
+              <h4>Theme & Companion</h4>
+              <p>Customize your experience</p>
+            </div>
+
+            <div class="more-card" onclick="exportAllData()">
+              <span>💾</span>
+              <h4>Export All Data</h4>
+              <p>Download your healing journey</p>
+            </div>
+
+            <div class="more-card" onclick="resetApp()">
+              <span>🔄</span>
+              <h4>Start Fresh</h4>
+              <p>Reset your journey</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="support-circle" class="page">
+          <h3>👥 Support Circle</h3>
+          <p class="section-intro">Add the people who have your back. Reach out when you need support.</p>
+
+          <div class="add-contact card">
+            <input type="text" id="contact-name" placeholder="Name" />
+            <input type="text" id="contact-relationship" placeholder="Relationship (friend, sibling, etc.)" />
+            <input type="tel" id="contact-phone" placeholder="Phone number (optional)" />
+            <button onclick="addSupportContact()" class="save-btn">Add to Circle</button>
+          </div>
+
+          <div id="support-contacts-list" class="contacts-list"></div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="holidays" class="page">
+          <h3>📅 Holiday Survival Kit</h3>
+          <p class="section-intro">Tools to get through anniversaries, birthdays, and holidays</p>
+
+          <div class="add-difficult-date card">
+            <h4>Add a Difficult Date</h4>
+            <input type="text" id="difficult-date-name" placeholder="What's the occasion? (their birthday, our anniversary...)" />
+            <input type="date" id="difficult-date-date" />
+            <button onclick="addDifficultDate()" class="save-btn">Add Date</button>
+          </div>
+
+          <div id="upcoming-difficult-dates" class="difficult-dates-list"></div>
+
+          <div class="survival-tips card">
+            <h4>💡 Survival Strategies</h4>
+            <div class="tip-list">
+              <div class="tip-item">
+                <span>📋</span>
+                <p><strong>Make a plan.</strong> Don't leave the day to chance. Schedule activities.</p>
+              </div>
+              <div class="tip-item">
+                <span>👥</span>
+                <p><strong>Reach out.</strong> Let your support circle know it's a hard day.</p>
+              </div>
+              <div class="tip-item">
+                <span>🎁</span>
+                <p><strong>Treat yourself.</strong> Plan something to look forward to.</p>
+              </div>
+              <div class="tip-item">
+                <span>📝</span>
+                <p><strong>Journal.</strong> Write about your feelings before the day arrives.</p>
+              </div>
+              <div class="tip-item">
+                <span>🚫</span>
+                <p><strong>Limit social media.</strong> Avoid triggers and comparisons.</p>
+              </div>
+              <div class="tip-item">
+                <span>💜</span>
+                <p><strong>Be gentle.</strong> It's okay to feel sad. Honor your emotions.</p>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="themes" class="page">
+          <h3>🎨 Theme & Companion</h3>
+          <p class="section-intro">Customize your healing experience</p>
+
+          <div class="card">
+            <h4>Choose Your Theme</h4>
+            <div class="theme-grid">
+              <div class="theme-option" data-theme="default" onclick="selectTheme('default')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #fce4ec, #e1bee7);"></div>
+                <span>Default</span>
+              </div>
+              <div class="theme-option" data-theme="dark" onclick="selectTheme('dark')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #1a1a2e, #16213e);"></div>
+                <span>Dark</span>
+              </div>
+              <div class="theme-option" data-theme="sunset" onclick="selectTheme('sunset')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #ff9a56, #ff6b6b);"></div>
+                <span>Sunset</span>
+              </div>
+              <div class="theme-option" data-theme="ocean" onclick="selectTheme('ocean')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #667eea, #764ba2);"></div>
+                <span>Ocean</span>
+              </div>
+              <div class="theme-option" data-theme="forest" onclick="selectTheme('forest')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #11998e, #38ef7d);"></div>
+                <span>Forest</span>
+              </div>
+              <div class="theme-option" data-theme="lavender" onclick="selectTheme('lavender')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #a18cd1, #fbc2eb);"></div>
+                <span>Lavender</span>
+              </div>
+              <div class="theme-option" data-theme="midnight" onclick="selectTheme('midnight')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #0f0c29, #302b63);"></div>
+                <span>Midnight</span>
+              </div>
+              <div class="theme-option" data-theme="rose" onclick="selectTheme('rose')">
+                <div class="theme-preview" style="background: linear-gradient(135deg, #f093fb, #f5576c);"></div>
+                <span>Rose</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>🔊 Sound Effects</h4>
+            <p style="margin-bottom: 15px; color: var(--text-light);">Gentle audio feedback for actions</p>
+            <button id="sound-toggle-btn" onclick="toggleSound()" class="btn" style="width: 100%;">🔊 Sound On</button>
+          </div>
+
+          <div class="card">
+            <h4>✨ Ambient Background</h4>
+            <p style="margin-bottom: 15px; color: var(--text-light);">Add a living, animated backdrop</p>
+            <div class="ambient-selector" id="ambient-selector">
+              <div class="ambient-option" data-ambient="none" onclick="selectAmbient('none')">
+                <span class="ambient-preview">🚫</span>
+                <span class="ambient-label">None</span>
+              </div>
+              <div class="ambient-option" data-ambient="sunrise" onclick="selectAmbient('sunrise')">
+                <span class="ambient-preview">🌅</span>
+                <span class="ambient-label">Sunrise</span>
+              </div>
+              <div class="ambient-option" data-ambient="starry" onclick="selectAmbient('starry')">
+                <span class="ambient-preview">✨</span>
+                <span class="ambient-label">Starry</span>
+              </div>
+              <div class="ambient-option" data-ambient="rain" onclick="selectAmbient('rain')">
+                <span class="ambient-preview">🌧️</span>
+                <span class="ambient-label">Rain</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>💬 Support Style</h4>
+            <p style="margin-bottom: 15px; color: var(--text-light);">Change how the app talks to you</p>
+            <div class="support-style-settings" id="support-style-settings">
+              <button class="style-setting-btn" data-style="gentle" onclick="changeSupportStyle('gentle')">
+                <span class="style-icon">🌸</span>
+                <span class="style-label">Gentle</span>
+              </button>
+              <button class="style-setting-btn" data-style="motivational" onclick="changeSupportStyle('motivational')">
+                <span class="style-icon">🔥</span>
+                <span class="style-label">Motivational</span>
+              </button>
+              <button class="style-setting-btn" data-style="toughLove" onclick="changeSupportStyle('toughLove')">
+                <span class="style-icon">💪</span>
+                <span class="style-label">Tough Love</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4>Your Healing Companion</h4>
+            <p style="margin-bottom: 15px; color: var(--text-light);">Customize your companion</p>
+            
+            <div class="companion-naming" style="margin-bottom: 20px;">
+              <label style="font-weight: 600; display: block; margin-bottom: 8px;">Give Your Companion a Name</label>
+              <div style="display: flex; gap: 10px;">
+                <input type="text" id="companion-name-input" placeholder="Enter a name..." style="flex: 1; padding: 10px; border-radius: 10px; border: 2px solid var(--primary-light);">
+                <button onclick="saveCompanionNameFromInput()" class="save-btn" style="padding: 10px 20px;">Save</button>
+              </div>
+            </div>
+            
+            <div style="margin-bottom: 15px;">
+              <label style="font-weight: 600; display: block; margin-bottom: 8px;">Choose Style</label>
+              <div class="character-grid">
+                <div class="character-option" data-gender="female" onclick="selectCharacterGender('female')">
+                  <span style="font-size: 2rem;">💖</span>
+                  <span>Pink Heart</span>
+                </div>
+                <div class="character-option" data-gender="male" onclick="selectCharacterGender('male')">
+                  <span style="font-size: 2rem;">💙</span>
+                  <span>Blue Heart</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="companion-stats card" style="background: var(--primary-light); margin-top: 15px;">
+              <h5 style="margin-bottom: 10px;">Companion Stats</h5>
+              <div id="companion-stats-display">
+                <p><strong>Level:</strong> <span id="stats-level">1</span></p>
+                <p><strong>Personality:</strong> <span id="stats-personality">Shy Friend</span></p>
+                <p><strong>Interactions:</strong> <span id="stats-interactions">0</span></p>
+                <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 10px;">Level up by journaling, tracking moods, and completing activities!</p>
+              </div>
+            </div>
+            
+            <div class="companion-story card" style="background: var(--primary-light); margin-top: 15px;">
+              <h5 style="margin-bottom: 10px;">📖 Companion's Story</h5>
+              <div id="companion-story-chapter">
+                <p class="story-week">Week <span id="story-week-number">1</span></p>
+                <p class="story-title" id="story-title">The Meeting</p>
+                <p class="story-content" id="story-content">Your companion has just arrived to help you on your healing journey...</p>
+                <div class="story-progress">
+                  <div class="story-progress-bar" id="story-progress-bar"></div>
+                </div>
+                <p class="story-next" id="story-next-hint">Next chapter unlocks in <span id="days-to-next-chapter">7</span> days</p>
+              </div>
+            </div>
+            
+            <div class="companion-toggle" style="margin-top: 20px;">
+              <label class="toggle-label">
+                <input type="checkbox" id="companion-visible-page" onchange="toggleCompanionVisibilityFromPage()" checked>
+                <span>Show companion on screen</span>
+              </label>
+            </div>
+          </div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="community" class="page">
+          <h3>💬 Community Support</h3>
+          <p class="section-intro">Share anonymously and support others going through similar experiences</p>
+
+          <div class="community-post card">
+            <h4>Share Your Thoughts</h4>
+            <textarea id="community-message" placeholder="Share what you're going through (anonymous)..."></textarea>
+            <button onclick="postToCommunity()" class="save-btn">Post Anonymously</button>
+          </div>
+
+          <div class="community-feed" id="community-feed">
+            <div class="community-post-item">
+              <p class="post-content">"Day 14. It's getting easier to breathe. Hang in there, everyone."</p>
+              <div class="post-meta">
+                <span>Anonymous Warrior</span>
+                <button onclick="sendHeart(this)" class="heart-btn">💜 12</button>
+              </div>
+            </div>
+            <div class="community-post-item">
+              <p class="post-content">"I made it through their birthday without texting. Small wins."</p>
+              <div class="post-meta">
+                <span>Healing Soul</span>
+                <button onclick="sendHeart(this)" class="heart-btn">💜 28</button>
+              </div>
+            </div>
+            <div class="community-post-item">
+              <p class="post-content">"Remember: the right person wouldn't make you feel this way."</p>
+              <div class="post-meta">
+                <span>Rising Phoenix</span>
+                <button onclick="sendHeart(this)" class="heart-btn">💜 45</button>
+              </div>
+            </div>
+          </div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="quiz" class="page">
+          <h3>💕 Dating Readiness Quiz</h3>
+          <p class="section-intro">Honest self-reflection to see where you are in your healing</p>
+
+          <div id="quiz-questions" class="quiz-container">
+            <div class="quiz-progress">
+              <span id="quiz-progress-text">Question 1 of 10</span>
+              <div class="quiz-progress-bar">
+                <div id="quiz-progress-fill"></div>
+              </div>
+            </div>
+
+            <div id="quiz-question-container">
+              <p id="quiz-question" class="quiz-question-text"></p>
+              <div id="quiz-options" class="quiz-options"></div>
+            </div>
+          </div>
+
+          <div id="quiz-results" class="quiz-results" style="display:none;">
+            <h4 id="quiz-result-title"></h4>
+            <p id="quiz-result-text"></p>
+            <div id="quiz-result-details"></div>
+            <button onclick="retakeQuiz()" class="save-btn">Retake Quiz</button>
+          </div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+
+        <section id="photos" class="page">
+          <h3>📸 Photo Memory Vault</h3>
+          <p class="section-intro">A safe place for photos you're not ready to delete. When you're ready, you can release them.</p>
+
+          <div class="photo-upload card">
+            <h4>Add a Photo</h4>
+            <input type="file" id="photo-input" accept="image/*" onchange="addPhotoToVault(event)" />
+            <label for="photo-input" class="photo-upload-btn">Choose Photo</label>
+            <textarea id="photo-note" placeholder="Why is this photo meaningful? What do you need to let go of?"></textarea>
+          </div>
+
+          <div class="photo-grid" id="photo-vault"></div>
+
+          <div id="release-ceremony-modal" class="exercise-modal" style="display:none;">
+            <div class="exercise-content">
+              <button onclick="closeReleaseCeremony()" class="close-btn">×</button>
+              <h3>🎈 Release Ceremony</h3>
+              <p>Take a deep breath. You're ready to let this go.</p>
+              <img id="release-photo" class="release-photo" />
+              <p id="release-note" class="release-note"></p>
+              <button onclick="confirmRelease()" class="release-btn">Release This Memory</button>
+            </div>
+          </div>
+
+          <button onclick="showPage('more')" class="back-btn">← Back</button>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <div id="custom-affirmations-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content">
+      <button onclick="closeCustomAffirmations()" class="close-btn">×</button>
+      <h3>✨ Your Affirmations</h3>
+      <p>Add personal mantras that resonate with you</p>
+      <input type="text" id="new-affirmation-input" placeholder="Type your affirmation..." />
+      <button onclick="addCustomAffirmation()" class="save-btn">Add Affirmation</button>
+      <div id="custom-affirmation-list"></div>
+    </div>
+  </div>
+
+  <div id="premium-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content">
+      <button onclick="closePremiumModal()" class="close-btn">×</button>
+      <h3>👑 Premium Features</h3>
+      <p>Unlock personalization and your healing companion</p>
+      
+      <div class="premium-section">
+        <h4>🎨 Theme Selection</h4>
+        <p class="section-intro">Choose your healing environment</p>
+        <div class="theme-picker" id="theme-picker">
+          <div class="theme-option theme-option-default active" data-theme="default" onclick="selectTheme('default')">
+            <span class="theme-label">Default</span>
+          </div>
+          <div class="theme-option theme-option-dark" data-theme="dark" onclick="selectTheme('dark')">
+            <span class="theme-label">Dark</span>
+          </div>
+          <div class="theme-option theme-option-sunset locked" data-theme="sunset" onclick="selectTheme('sunset')">
+            <span class="theme-label">Sunset</span>
+          </div>
+          <div class="theme-option theme-option-ocean locked" data-theme="ocean" onclick="selectTheme('ocean')">
+            <span class="theme-label">Ocean</span>
+          </div>
+          <div class="theme-option theme-option-forest locked" data-theme="forest" onclick="selectTheme('forest')">
+            <span class="theme-label">Forest</span>
+          </div>
+          <div class="theme-option theme-option-lavender locked" data-theme="lavender" onclick="selectTheme('lavender')">
+            <span class="theme-label">Lavender</span>
+          </div>
+          <div class="theme-option theme-option-midnight locked" data-theme="midnight" onclick="selectTheme('midnight')">
+            <span class="theme-label">Midnight</span>
+          </div>
+          <div class="theme-option theme-option-rose locked" data-theme="rose" onclick="selectTheme('rose')">
+            <span class="theme-label">Rose</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="premium-section">
+        <h4>💖 Healing Companion</h4>
+        <p class="section-intro">Your animated heart friend who heals with you</p>
+        <div class="character-picker" id="character-picker">
+          <div class="character-option active" data-gender="female" onclick="selectCharacterGender('female')">
+            <span class="character-preview">💗✨</span>
+            <span class="character-label">Sparkle</span>
+          </div>
+          <div class="character-option" data-gender="male" onclick="selectCharacterGender('male')">
+            <span class="character-preview">💗💪</span>
+            <span class="character-label">Brave</span>
+          </div>
+        </div>
+        <div class="companion-toggle">
+          <label>
+            <input type="checkbox" id="companion-visible" onchange="toggleCompanionVisibility()" checked />
+            Show companion on screen
+          </label>
+        </div>
+      </div>
+
+      <div class="premium-section" id="ai-features-section" style="display:none;">
+        <h4>🤖 AI-Powered Tools</h4>
+        <p class="section-intro">Personalized healing powered by AI</p>
+        <div class="ai-tools-grid">
+          <button class="ai-tool-btn" onclick="openAICoach()">
+            <span class="ai-tool-icon">💬</span>
+            <span class="ai-tool-name">AI Healing Coach</span>
+            <span class="ai-tool-desc">Talk to your personal coach</span>
+          </button>
+          <button class="ai-tool-btn" onclick="openClosureCeremony()">
+            <span class="ai-tool-icon">🕯️</span>
+            <span class="ai-tool-name">Closure Ceremony</span>
+            <span class="ai-tool-desc">Ritual to release the past</span>
+          </button>
+          <button class="ai-tool-btn" onclick="openPatternAnalysis()">
+            <span class="ai-tool-icon">🔍</span>
+            <span class="ai-tool-name">Pattern Detector</span>
+            <span class="ai-tool-desc">Understand relationship patterns</span>
+          </button>
+          <button class="ai-tool-btn" onclick="openMemoryReframe()">
+            <span class="ai-tool-icon">🧠</span>
+            <span class="ai-tool-name">Memory Reframer</span>
+            <span class="ai-tool-desc">Transform painful memories</span>
+          </button>
+          <button class="ai-tool-btn" onclick="openReboundCheck()">
+            <span class="ai-tool-icon">⚠️</span>
+            <span class="ai-tool-name">Rebound Warning</span>
+            <span class="ai-tool-desc">Check if you're ready to date</span>
+          </button>
+          <button class="ai-tool-btn" onclick="openGrowthDashboard()">
+            <span class="ai-tool-icon">📊</span>
+            <span class="ai-tool-name">Growth Dashboard</span>
+            <span class="ai-tool-desc">AI analysis of your progress</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="premium-upgrade-card" id="upgrade-card">
+        <h3>Unlock Premium</h3>
+        <p>Get access to all themes, AI coach, and your healing companion</p>
+        <ul class="premium-features-list">
+          <li>✨ 6 exclusive color themes</li>
+          <li>💖 Animated healing heart companion</li>
+          <li>🤖 AI Healing Coach - 24/7 support</li>
+          <li>🕯️ Closure Ceremony Builder</li>
+          <li>🔍 Relationship Pattern Analysis</li>
+          <li>🧠 Memory Reframing Tool</li>
+          <li>📊 Growth Analytics Dashboard</li>
+        </ul>
+        <button class="upgrade-btn" onclick="upgradeToPremium()">Upgrade to Premium - $4.99/mo</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="ai-coach-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:600px;">
+      <button onclick="closeAICoachModal()" class="close-btn">×</button>
+      <h3>💬 AI Healing Coach</h3>
+      <p class="section-intro">Your personal AI coach is here to help. Share what's on your mind.</p>
+      <div id="ai-chat-messages" class="ai-chat-messages"></div>
+      <div class="ai-chat-input-container">
+        <textarea id="ai-coach-input" placeholder="Tell me what's on your heart..." rows="3"></textarea>
+        <button onclick="sendToAICoach()" class="send-btn">Send 💌</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="closure-ceremony-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:650px;">
+      <button onclick="closeClosureCeremonyModal()" class="close-btn">×</button>
+      <h3>🕯️ Closure Ceremony</h3>
+      <p class="section-intro">Create a meaningful ritual to release your relationship and find peace.</p>
+      <div id="closure-setup" class="closure-section">
+        <div class="form-group">
+          <label>How long were you together?</label>
+          <input type="text" id="closure-duration" placeholder="e.g., 2 years" class="full-width-input" />
+        </div>
+        <div class="form-group">
+          <label>What's hardest to let go of?</label>
+          <textarea id="closure-struggling" placeholder="The memories, the future we planned, feeling loved..." rows="3"></textarea>
+        </div>
+        <button onclick="generateClosureCeremony()" class="primary-btn">Generate My Ceremony ✨</button>
+      </div>
+      <div id="closure-result" class="closure-section" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div id="pattern-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:650px;">
+      <button onclick="closePatternModal()" class="close-btn">×</button>
+      <h3>🔍 Relationship Pattern Detector</h3>
+      <p class="section-intro">Answer honestly to discover patterns in your relationships.</p>
+      <div id="pattern-questions" class="pattern-section">
+        <div class="form-group">
+          <label>What attracted you to your ex initially?</label>
+          <textarea id="pattern-q1" rows="2" placeholder="What drew you to them?"></textarea>
+        </div>
+        <div class="form-group">
+          <label>What were the first red flags you noticed?</label>
+          <textarea id="pattern-q2" rows="2" placeholder="Looking back, what should you have noticed?"></textarea>
+        </div>
+        <div class="form-group">
+          <label>How did you typically handle conflict?</label>
+          <textarea id="pattern-q3" rows="2" placeholder="Did you avoid, fight, shut down...?"></textarea>
+        </div>
+        <div class="form-group">
+          <label>What needs weren't being met?</label>
+          <textarea id="pattern-q4" rows="2" placeholder="Emotional, physical, intellectual..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>Do you see similar patterns in past relationships?</label>
+          <textarea id="pattern-q5" rows="2" placeholder="Be honest with yourself..."></textarea>
+        </div>
+        <button onclick="analyzePatterns()" class="primary-btn">Analyze My Patterns 🔍</button>
+      </div>
+      <div id="pattern-result" class="pattern-section" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div id="reframe-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:600px;">
+      <button onclick="closeReframeModal()" class="close-btn">×</button>
+      <h3>🧠 Memory Reframer</h3>
+      <p class="section-intro">Transform a painful memory into a lesson for growth.</p>
+      <div id="reframe-input-section">
+        <div class="form-group">
+          <label>Describe a memory that still hurts:</label>
+          <textarea id="reframe-memory" rows="4" placeholder="The memory that keeps coming back..."></textarea>
+        </div>
+        <button onclick="reframeMemory()" class="primary-btn">Reframe This Memory 🧠</button>
+      </div>
+      <div id="reframe-result" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div id="rebound-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:600px;">
+      <button onclick="closeReboundModal()" class="close-btn">×</button>
+      <h3>⚠️ Rebound Risk Assessment</h3>
+      <p class="section-intro">Honest check-in: Are you ready to date or still healing?</p>
+      <div id="rebound-questions" class="rebound-section">
+        <div class="checkbox-group">
+          <label><input type="checkbox" id="rb-1" /> I'm actively trying to meet new people to distract myself</label>
+          <label><input type="checkbox" id="rb-2" /> I compare everyone I meet to my ex</label>
+          <label><input type="checkbox" id="rb-3" /> I still check my ex's social media regularly</label>
+          <label><input type="checkbox" id="rb-4" /> I fantasize about making my ex jealous</label>
+          <label><input type="checkbox" id="rb-5" /> I feel like I need someone to feel complete</label>
+          <label><input type="checkbox" id="rb-6" /> I'm afraid of being alone</label>
+          <label><input type="checkbox" id="rb-7" /> I've started talking to someone but hide it</label>
+          <label><input type="checkbox" id="rb-8" /> I find myself oversharing with new matches</label>
+          <label><input type="checkbox" id="rb-9" /> I feel ready to give love without expecting it to fix me</label>
+          <label><input type="checkbox" id="rb-10" /> I've processed most of my grief and feel at peace</label>
+        </div>
+        <button onclick="assessReboundRisk()" class="primary-btn">Get My Assessment ⚠️</button>
+      </div>
+      <div id="rebound-result" class="rebound-section" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div id="growth-modal" class="exercise-modal" style="display:none;">
+    <div class="exercise-content" style="max-width:700px;">
+      <button onclick="closeGrowthModal()" class="close-btn">×</button>
+      <h3>📊 Growth Dashboard</h3>
+      <p class="section-intro">AI-powered analysis of your healing journey.</p>
+      <div id="growth-loading" style="text-align:center; padding:40px;">
+        <div class="loading-spinner"></div>
+        <p>Analyzing your progress...</p>
+      </div>
+      <div id="growth-result" style="display:none;"></div>
+    </div>
+  </div>
+
+  <div class="healing-companion" id="healing-companion" onclick="companionClicked()">
+    <div class="companion-bubble" id="companion-bubble">
+      <span id="companion-message">Hey! I'm here to heal with you 💕</span>
+      <button class="bubble-dismiss" onclick="event.stopPropagation(); dismissBubble();">×</button>
+    </div>
+    <div class="companion-sprite">
+      <div class="companion-body female comfort" id="companion-body">
+        <svg class="heart-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="heartGradient" cx="30%" cy="30%">
+              <stop offset="0%" stop-color="#ff9ecf"/>
+              <stop offset="50%" stop-color="#ff6ba9"/>
+              <stop offset="100%" stop-color="#e84a87"/>
+            </radialGradient>
+            <radialGradient id="heartGradientMale" cx="30%" cy="30%">
+              <stop offset="0%" stop-color="#a8d4ff"/>
+              <stop offset="50%" stop-color="#6bb3ff"/>
+              <stop offset="100%" stop-color="#4a90e8"/>
+            </radialGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="strongGlow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <g class="heart-group" filter="url(#glow)">
+            <path class="heart-shape" d="M50 88 C20 60, 5 35, 25 20 C35 12, 50 18, 50 30 C50 18, 65 12, 75 20 C95 35, 80 60, 50 88Z" fill="url(#heartGradient)"/>
+            <ellipse class="heart-shine" cx="32" cy="32" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(-30 32 32)"/>
+          </g>
+          <g class="face-group">
+            <ellipse class="eye left-eye" cx="38" cy="45" rx="5" ry="6" fill="#333"/>
+            <ellipse class="eye right-eye" cx="62" cy="45" rx="5" ry="6" fill="#333"/>
+            <ellipse class="eye-shine left-shine" cx="36" cy="43" rx="2" ry="2" fill="white"/>
+            <ellipse class="eye-shine right-shine" cx="60" cy="43" rx="2" ry="2" fill="white"/>
+            <path class="mouth" d="M42 58 Q50 66, 58 58" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <ellipse class="blush left-blush" cx="28" cy="52" rx="6" ry="4" fill="rgba(255,150,150,0.5)"/>
+            <ellipse class="blush right-blush" cx="72" cy="52" rx="6" ry="4" fill="rgba(255,150,150,0.5)"/>
+          </g>
+          <g class="accessories">
+          </g>
+        </svg>
+        <div class="companion-arms">
+          <div class="arm left-arm"></div>
+          <div class="arm right-arm"></div>
+        </div>
+        <div class="companion-particles" id="companion-particles"></div>
+      </div>
+      <div class="companion-info">
+        <div class="companion-name" id="companion-name">Sparkle</div>
+        <div class="companion-title" id="companion-title">Shy Friend</div>
+      </div>
+      <div class="companion-level" id="companion-level">Lv 1</div>
+      <div class="companion-health-bar">
+        <div class="companion-health-fill" id="companion-health" style="width: 30%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="empathy-toast" class="empathy-toast">
+    <button class="empathy-toast-close" onclick="hideEmpathyToast()">&times;</button>
+    <div class="empathy-toast-header">
+      <span class="empathy-toast-icon">💝</span>
+      <span class="empathy-toast-title">A note for you...</span>
+    </div>
+    <p class="empathy-toast-message" id="empathy-toast-message"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
